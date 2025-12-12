@@ -22,23 +22,30 @@ public class HelpRequestServer
     {
         Task.Run(() =>
         {
-            var listener = new HttpListener();
-            listener.Prefixes.Add("http://*:5000/");
-            listener.Start();
-
-            while (true)
+            try
             {
-                var ctx = listener.GetContext();
-                using var reader = new StreamReader(ctx.Request.InputStream);
-                var json = reader.ReadToEnd();
+                var listener = new HttpListener();
+                listener.Prefixes.Add("http://+:7777/api/helprequest/");
+                listener.Start();
 
-                var req = JsonSerializer.Deserialize<HelpRequest>(json);
+                while (true)
+                {
+                    var ctx = listener.GetContext();
+                    using var reader = new StreamReader(ctx.Request.InputStream);
+                    var json = reader.ReadToEnd();
 
-                if (req != null)
-                    _vm.AddRequest(req);
+                    var req = JsonSerializer.Deserialize<HelpRequest>(json);
 
-                ctx.Response.StatusCode = 200;
-                ctx.Response.Close();
+                    if (req != null)
+                        _vm.AddRequest(req);
+
+                    ctx.Response.StatusCode = 200;
+                    ctx.Response.Close();
+                }    
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Errore nel server: " + ex);
             }
         });
     }

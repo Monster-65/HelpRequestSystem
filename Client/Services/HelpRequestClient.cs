@@ -15,6 +15,6 @@ public class HelpRequestClient
         var json = JsonSerializer.Serialize(req);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        await _http.PostAsync($"http://{serverIp}:5000/", content);
+        await _http.PostAsync($"http://{serverIp}:7777/", content);
     }
 }
