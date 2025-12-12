@@ -332,6 +332,7 @@
 /home/king_monster_/HelpRequestSystem/ServerMaster/obj/Release/net8.0/win-x64/ServerMaster.AssemblyInfo.cs
 /home/king_monster_/HelpRequestSystem/ServerMaster/obj/Release/net8.0/win-x64/ServerMaster.csproj.CoreCompileInputs.cache
 /home/king_monster_/HelpRequestSystem/ServerMaster/obj/Release/net8.0/win-x64/ServerMaster.MvcApplicationPartsAssemblyInfo.cache
+/home/king_monster_/HelpRequestSystem/ServerMaster/obj/Release/net8.0/win-x64/ServerMaster.sourcelink.json
 /home/king_monster_/HelpRequestSystem/ServerMaster/obj/Release/net8.0/win-x64/scopedcss/bundle/ServerMaster.styles.css
 /home/king_monster_/HelpRequestSystem/ServerMaster/obj/Release/net8.0/win-x64/staticwebassets.build.json
 /home/king_monster_/HelpRequestSystem/ServerMaster/obj/Release/net8.0/win-x64/staticwebassets.development.json

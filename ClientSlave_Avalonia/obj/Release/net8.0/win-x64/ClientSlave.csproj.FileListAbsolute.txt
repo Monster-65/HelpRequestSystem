@@ -1,10 +1,3 @@
-/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.csproj.AssemblyReference.cache
-/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/Avalonia/Resources.Inputs.cache
-/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/Avalonia/resources
-/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.GeneratedMSBuildEditorConfig.editorconfig
-/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.AssemblyInfoInputs.cache
-/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.AssemblyInfo.cs
-/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.csproj.CoreCompileInputs.cache
 /home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/bin/Release/net8.0/win-x64/ClientSlave.exe
 /home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/bin/Release/net8.0/win-x64/ClientSlave.deps.json
 /home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/bin/Release/net8.0/win-x64/ClientSlave.runtimeconfig.json
@@ -223,6 +216,14 @@
 /home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/bin/Release/net8.0/win-x64/mscordbi.dll
 /home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/bin/Release/net8.0/win-x64/mscorrc.dll
 /home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/bin/Release/net8.0/win-x64/msquic.dll
+/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.csproj.AssemblyReference.cache
+/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/Avalonia/Resources.Inputs.cache
+/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/Avalonia/resources
+/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.GeneratedMSBuildEditorConfig.editorconfig
+/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.AssemblyInfoInputs.cache
+/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.AssemblyInfo.cs
+/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.csproj.CoreCompileInputs.cache
+/home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/ClientSlave.sourcelink.json
 /home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/Avalonia/references
 /home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/Avalonia/original.dll
 /home/king_monster_/HelpRequestSystem/ClientSlave_Avalonia/obj/Release/net8.0/win-x64/Avalonia/original.pdb
