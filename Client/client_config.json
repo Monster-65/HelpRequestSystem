@@ -1,0 +1,9 @@
+{
+  "DefaultServerIp": "192.168.1.22",
+  "ServerPort": "7777",
+  "ApiEndpoint": "/api/helprequest/",
+  "LogFilePath": "client_log.txt",
+  "EnableFileLogging": true,
+  "EnableConsoleLogging": true,
+  "RequestTimeoutSeconds": 10
+}

@@ -16,13 +16,48 @@ public class MainWindowViewModel : ReactiveObject
 
     private readonly HelpRequestClient _client = new();
 
-    public string ServerIP { get; set; } = "192.168.1.22";
+    private string _serverIP;
+    public string ServerIP 
+    { 
+        get => _serverIP;
+        set => this.RaiseAndSetIfChanged(ref _serverIP, value);
+    }
+    
     public string User { get; set; } = "";
     public string Message { get; set; } = "";
+
+    public MainWindowViewModel()
+    {
+        // Carica IP predefinito dalla configurazione
+        _serverIP = AppConfig.Instance.DefaultServerIp;
+        Logger.Log("Client avviato");
+        Logger.Log($"IP server predefinito: {_serverIP}");
+        Logger.Log($"📄 Log salvati in: {AppConfig.Instance.LogFilePath}");
+    }
 
     public async void SendRequest()
     {
         try {
+            if (string.IsNullOrWhiteSpace(User))
+            {
+                await ShowMessage("Inserisci il tuo nome!");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(Message))
+            {
+                await ShowMessage("Inserisci un messaggio!");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(ServerIP))
+            {
+                await ShowMessage("Inserisci l'IP del server!");
+                return;
+            }
+
+            Logger.Log($"Preparazione invio richiesta - User: {User}, Server: {ServerIP}");
+
             var req = new HelpRequest
             {
                 ComputerName = Environment.MachineName,
@@ -34,9 +69,13 @@ public class MainWindowViewModel : ReactiveObject
             await _client.Send(ServerIP, req);
 
             Message = ""; // Svuota il messaggio
-            await ShowMessage("Richiesta inviata correttamente.");
+            this.RaisePropertyChanged(nameof(Message));
+            
+            Logger.Log("✓ Richiesta completata con successo");
+            await ShowMessage("Richiesta inviata correttamente!");
         } catch (Exception ex) {
-            await ShowMessage($"Errore durante l'invio della richiesta: {ex.Message}\n");
+            Logger.LogError("Errore durante l'invio della richiesta", ex);
+            await ShowMessage($"Errore durante l'invio:\n{ex.Message}");
         }
     }
 
