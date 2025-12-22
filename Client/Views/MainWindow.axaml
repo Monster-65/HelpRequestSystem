@@ -28,8 +28,6 @@
 
         <Button Content="Invia Richiesta" Command="{Binding SendRequest}"/>
 
-        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-
     </StackPanel>
 
 </Window>

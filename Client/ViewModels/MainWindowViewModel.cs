@@ -12,8 +12,6 @@ namespace Client.ViewModels;
 
 public class MainWindowViewModel : ReactiveObject
 {
-    public string Greeting { get; } = "Welcome to Avalonia!";
-
     private readonly HelpRequestClient _client = new();
 
     private string _serverIP;

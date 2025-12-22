@@ -37,3 +37,14 @@
 [2025-12-22 12:56:51]    Computer: KingMonsterComputer, User: Gabry
 [2025-12-22 12:56:51] ✓ Richiesta aggiunta alla collection
 [2025-12-22 12:56:51] ✓ Risposta 200 inviata al client
+[2025-12-22 13:32:17] Avvio del server sulla porta 7777...
+[2025-12-22 13:32:17] ✓ Server in ascolto su http://+:7777/api/helprequest/
+[2025-12-22 13:32:17] ✓ Endpoint API: /api/helprequest/
+[2025-12-22 13:32:17] ⚠ Assicurati di eseguire il server con privilegi amministrativi!
+[2025-12-22 13:32:17] 📄 Log salvati in: server_log.txt
+[2025-12-22 13:33:23] 📨 Richiesta ricevuta da 127.0.0.1:56508
+[2025-12-22 13:33:23]    Payload: {"ComputerName":"KingMonsterComputer","User":"GAbry","Message":"prova no root","Timestamp":"2025-12-22T13:33:23.018313+01:00"}
+[2025-12-22 13:33:23] ✓ Richiesta deserializzata correttamente
+[2025-12-22 13:33:23]    Computer: KingMonsterComputer, User: GAbry
+[2025-12-22 13:33:23] ✓ Richiesta aggiunta alla collection
+[2025-12-22 13:33:23] ✓ Risposta 200 inviata al client
