@@ -1,0 +1,7 @@
+{
+  "ServerPort": "7777",
+  "ApiEndpoint": "/api/helprequest/",
+  "LogFilePath": "server_log.txt",
+  "EnableFileLogging": true,
+  "EnableConsoleLogging": true
+}

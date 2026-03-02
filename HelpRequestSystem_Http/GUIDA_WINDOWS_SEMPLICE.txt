@@ -1,0 +1,414 @@
+═══════════════════════════════════════════════════════════════
+    📦 GUIDA DEPLOYMENT WINDOWS - FACILE E CHIARO
+═══════════════════════════════════════════════════════════════
+
+
+🎯 COSA USARE SU WINDOWS?
+─────────────────────────────────────────────────────────────
+
+Hai 2 opzioni, MA ti consiglio i file .BAT:
+
+┌─────────────────────────────────────────────────────────────┐
+│ OPZIONE 1: File .BAT (⭐ RACCOMANDATO)                       │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ✅ Doppio click su "start_server.bat"                       │
+│  ✅ Doppio click su "start_client.bat"                       │
+│                                                               │
+│  VANTAGGI:                                                    │
+│    • Più facile da usare                                     │
+│    • Mostra messaggio di avvio                               │
+│    • Non si chiude automaticamente (ha "pause")              │
+│    • Perfetto per utenti non tecnici                         │
+│                                                               │
+└─────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────┐
+│ OPZIONE 2: File .EXE                                         │
+├─────────────────────────────────────────────────────────────┤
+│                                                               │
+│  ✅ Doppio click su "Server.exe"                             │
+│  ✅ Doppio click su "Client.exe"                             │
+│                                                               │
+│  VANTAGGI:                                                    │
+│    • Avvio diretto                                           │
+│    • Più "professionale"                                     │
+│                                                               │
+│  SVANTAGGI:                                                   │
+│    • Nessun messaggio di conferma                            │
+│    • Potrebbero servire permessi amministratore              │
+│                                                               │
+└─────────────────────────────────────────────────────────────┘
+
+🎯 CONCLUSIONE: USA I FILE .BAT per facilità d'uso!
+
+
+═══════════════════════════════════════════════════════════════
+    📋 PROCEDURA COMPLETA PASSO-PASSO
+═══════════════════════════════════════════════════════════════
+
+
+FASE 1: PREPARAZIONE SU LINUX
+─────────────────────────────────────────────────────────────
+
+1. Apri il terminale nella cartella del progetto:
+   cd /home/king_monster_/Scrivania/HelpRequestSystem
+
+2. Esegui lo script di build:
+   ./build_windows.sh
+
+3. Scegli opzione [1] - Self-contained
+
+4. Aspetta che finisca (circa 1-2 minuti)
+
+5. Crea un file ZIP:
+   cd build_windows
+   zip -r HelpRequestSystem_Windows.zip *
+
+   ✅ File pronto: build_windows/HelpRequestSystem_Windows.zip
+
+
+FASE 2: TRASFERIMENTO SU WINDOWS
+─────────────────────────────────────────────────────────────
+
+1. Copia il file ZIP su una chiavetta USB
+
+2. Inserisci la chiavetta nel computer Windows
+
+3. Copia HelpRequestSystem_Windows.zip sul Desktop Windows
+
+4. Click destro → Estrai tutto
+
+   Avrai queste cartelle:
+   📁 Server/
+   📁 Client/
+   📄 README_WINDOWS.txt
+
+
+FASE 3: INSTALLAZIONE SERVER (Computer Master)
+─────────────────────────────────────────────────────────────
+
+1. Copia TUTTA la cartella "Server" in una posizione permanente:
+   Esempio: C:\HelpRequestSystem\Server\
+
+2. Apri la cartella Server
+
+3. Trova e apri con Notepad: "server_config.json"
+
+4. Controlla/modifica la configurazione:
+   
+   {
+     "ServerPort": "7777",           ← Porta (lascia 7777 se va bene)
+     "ApiEndpoint": "/api/helprequest/",
+     "LogFilePath": "server_log.txt",
+     "EnableFileLogging": true,
+     "EnableConsoleLogging": true
+   }
+
+5. Salva e chiudi Notepad
+
+6. 🚀 AVVIO SERVER:
+   
+   Opzione A (Raccomandato):
+     → Doppio click su "start_server.bat"
+   
+   Opzione B:
+     → Doppio click su "Server.exe"
+
+7. Se Windows Firewall chiede permesso:
+   ✅ Clicca "Consenti accesso" per reti private
+
+8. Trova l'IP del server:
+   - Apri "server_log.txt" con Notepad
+   - Cerca una riga tipo: "Server in ascolto..."
+   - Oppure apri CMD e digita: ipconfig
+   - Annota l'indirizzo IPv4 (es. 192.168.1.22)
+
+
+FASE 4: INSTALLAZIONE CLIENT (Computer Slave)
+─────────────────────────────────────────────────────────────
+
+1. Copia TUTTA la cartella "Client" su ogni computer client:
+   Esempio: C:\HelpRequestSystem\Client\
+
+2. Apri la cartella Client
+
+3. Trova e apri con Notepad: "client_config.json"
+
+4. Modifica la configurazione con l'IP del server:
+   
+   {
+     "DefaultServerIp": "192.168.1.22",  ← CAMBIA CON IP SERVER!
+     "ServerPort": "7777",                ← DEVE essere uguale al server
+     "ApiEndpoint": "/api/helprequest/",
+     "LogFilePath": "client_log.txt",
+     "EnableFileLogging": true,
+     "EnableConsoleLogging": true,
+     "RequestTimeoutSeconds": 10
+   }
+
+5. Salva e chiudi Notepad
+
+6. 🚀 AVVIO CLIENT:
+   
+   Opzione A (Raccomandato):
+     → Doppio click su "start_client.bat"
+   
+   Opzione B:
+     → Doppio click su "Client.exe"
+
+7. Si apre la finestra del client
+
+
+FASE 5: TEST DEL SISTEMA
+─────────────────────────────────────────────────────────────
+
+1. Nel CLIENT:
+   ├─ Campo "IP del Master": Dovrebbe già essere compilato
+   │  (Se no, inserisci l'IP del server)
+   ├─ Campo "Tuo nome": Inserisci il tuo nome
+   └─ Campo "Messaggio": Scrivi "Test di connessione"
+
+2. Clicca "Invia Richiesta"
+
+3. Dovresti vedere: "Richiesta inviata correttamente!"
+
+4. Nel SERVER:
+   └─ La richiesta dovrebbe apparire nella lista!
+
+✅ FUNZIONA? SISTEMA OPERATIVO! 🎉
+
+❌ NON FUNZIONA? Vai a "RISOLUZIONE PROBLEMI" sotto
+
+
+═══════════════════════════════════════════════════════════════
+    📊 DIFFERENZA TRA .BAT e .EXE
+═══════════════════════════════════════════════════════════════
+
+File .BAT (start_server.bat / start_client.bat)
+──────────────────────────────────────────────────────────────
+Cosa fa:
+  1. Mostra un messaggio di benvenuto
+  2. Dice "I log verranno salvati in xxx_log.txt"
+  3. Avvia Server.exe o Client.exe
+  4. Rimane aperto con "pause" alla fine
+
+Quando usarlo:
+  ✅ Sempre, è più user-friendly
+  ✅ Per utenti non tecnici
+  ✅ Durante i test
+  ✅ Se vuoi vedere i messaggi di avvio
+
+
+File .EXE (Server.exe / Client.exe)
+──────────────────────────────────────────────────────────────
+Cosa fa:
+  1. Avvia direttamente l'applicazione
+  2. Nessun messaggio intermedio
+  3. Parte immediatamente
+
+Quando usarlo:
+  ✅ Se vuoi creare un'icona sul desktop
+  ✅ Se l'utente è esperto
+  ✅ Per avvio automatico all'avvio di Windows
+
+
+═══════════════════════════════════════════════════════════════
+    🐛 RISOLUZIONE PROBLEMI
+═══════════════════════════════════════════════════════════════
+
+
+PROBLEMA 1: "Impossibile connettersi al server"
+──────────────────────────────────────────────────────────────
+Sul CLIENT vedi questo messaggio
+
+SOLUZIONI:
+
+1️⃣  Verifica che il server sia avviato
+    → Guarda se il server è aperto
+    → Apri "server_log.txt" sul server
+    → Deve dire "Server in ascolto..."
+
+2️⃣  Verifica l'IP nel client_config.json
+    → Apri client_config.json con Notepad
+    → Controlla "DefaultServerIp"
+    → Deve essere l'IP del computer server
+
+3️⃣  Verifica la porta
+    → Sia server_config.json che client_config.json
+    → Devono avere lo STESSO valore in "ServerPort"
+
+4️⃣  Test di rete
+    → Sul client, apri CMD
+    → Digita: ping IP_DEL_SERVER
+    → Deve rispondere, non "Richiesta scaduta"
+
+5️⃣  Firewall Windows
+    → Pannello di controllo → Windows Defender Firewall
+    → Consenti app → Cerca "Server.exe"
+    → Se non c'è, aggiungi e consenti su rete privata
+
+
+PROBLEMA 2: Il server non parte / Si chiude subito
+──────────────────────────────────────────────────────────────
+SOLUZIONI:
+
+1️⃣  Controlla il log
+    → Apri "server_log.txt"
+    → Cerca la parola "ERRORE"
+    → Leggi il messaggio
+
+2️⃣  Porta già in uso
+    → Apri CMD come amministratore
+    → Digita: netstat -ano | findstr 7777
+    → Se vedi righe, la porta è occupata
+    → Chiudi l'altra applicazione
+    → Oppure cambia porta in server_config.json
+
+3️⃣  Permessi amministrativi
+    → Click destro su start_server.bat
+    → "Esegui come amministratore"
+
+
+PROBLEMA 3: Il client non trova l'IP del server
+──────────────────────────────────────────────────────────────
+SOLUZIONI:
+
+1️⃣  Sul SERVER, trova l'IP:
+    
+    Metodo A:
+      → Apri CMD
+      → Digita: ipconfig
+      → Cerca "Scheda Ethernet" o "Scheda LAN wireless"
+      → Trova "Indirizzo IPv4"
+      → Esempio: 192.168.1.22
+
+    Metodo B:
+      → Apri server_log.txt
+      → Dovrebbe essere indicato lì
+
+2️⃣  Inserisci l'IP nel client_config.json
+    → "DefaultServerIp": "192.168.1.22"
+
+
+PROBLEMA 4: Nessun messaggio di errore, ma non funziona
+──────────────────────────────────────────────────────────────
+SOLUZIONI:
+
+1️⃣  Controlla ENTRAMBI i file di log:
+    → server_log.txt sul server
+    → client_log.txt sul client
+    → Cerca messaggi di errore
+
+2️⃣  Verifica che i computer siano sulla stessa rete
+    → Devono essere collegati allo stesso router
+    → Non devono avere VPN attive
+
+
+═══════════════════════════════════════════════════════════════
+    💡 SUGGERIMENTI E TRUCCHI
+═══════════════════════════════════════════════════════════════
+
+
+✨ Creare icona sul Desktop
+──────────────────────────────────────────────────────────────
+1. Click destro su start_server.bat (o start_client.bat)
+2. Invia a → Desktop (crea collegamento)
+3. Rinomina il collegamento come vuoi
+
+
+✨ Avvio automatico all'avvio di Windows
+──────────────────────────────────────────────────────────────
+1. Premi Win+R
+2. Digita: shell:startup
+3. Copia il collegamento di start_server.bat in quella cartella
+
+
+✨ Vedere i log in tempo reale
+──────────────────────────────────────────────────────────────
+1. Apri PowerShell nella cartella Server o Client
+2. Digita: Get-Content -Path "server_log.txt" -Wait -Tail 20
+3. I nuovi log appariranno in tempo reale!
+
+
+✨ Backup della configurazione
+──────────────────────────────────────────────────────────────
+Prima di modificare i file .json, fai una copia:
+1. Click destro su server_config.json
+2. Copia
+3. Incolla nella stessa cartella
+4. Rinomina in "server_config.json.backup"
+
+
+✨ Cambiare porta facilmente
+──────────────────────────────────────────────────────────────
+Se la porta 7777 è occupata:
+
+1. Sul SERVER:
+   → Apri server_config.json
+   → Cambia "ServerPort": "8080"
+   → Salva
+
+2. Su TUTTI i CLIENT:
+   → Apri client_config.json
+   → Cambia "ServerPort": "8080"
+   → Salva
+
+3. Riavvia tutto
+
+
+═══════════════════════════════════════════════════════════════
+    📝 CHECKLIST DEPLOYMENT
+═══════════════════════════════════════════════════════════════
+
+Prima di distribuire, verifica:
+
+PREPARAZIONE:
+  □ Build Windows completata (./build_windows.sh)
+  □ File ZIP creato
+  □ ZIP copiato su chiavetta USB
+
+SERVER:
+  □ Cartella Server copiata su computer master
+  □ server_config.json verificato/modificato
+  □ Server avviato (start_server.bat)
+  □ Firewall permesso dato
+  □ IP del server annotato
+  □ server_log.txt mostra "Server in ascolto"
+
+CLIENT (per ogni PC):
+  □ Cartella Client copiata
+  □ client_config.json modificato con IP server
+  □ Porta corrisponde a quella del server
+  □ Client avviato (start_client.bat)
+  □ Test richiesta inviata
+  □ Richiesta ricevuta sul server
+
+✅ TUTTO SPUNTATO? SISTEMA PRONTO! 🎉
+
+
+═══════════════════════════════════════════════════════════════
+    📞 RIEPILOGO RAPIDO
+═══════════════════════════════════════════════════════════════
+
+DOMANDA: Cosa uso su Windows, .bat o .exe?
+RISPOSTA: Usa i file .BAT (start_server.bat e start_client.bat)
+          Sono più facili e user-friendly!
+
+DOMANDA: Posso usare direttamente gli .exe?
+RISPOSTA: Sì! I file .bat chiamano comunque gli .exe.
+          Usa gli .exe se preferisci, funzionano uguale.
+
+DOMANDA: Quale è la differenza?
+RISPOSTA: .BAT mostra messaggi e non si chiude automaticamente
+          .EXE parte direttamente senza messaggi
+
+CONSIGLIO: Per utenti normali → .BAT
+           Per utenti esperti → .EXE o .BAT, scegli tu!
+
+
+═══════════════════════════════════════════════════════════════
+
+📄 Per altre domande, leggi: README_WINDOWS.txt
+
+🎊 Buon deployment! 🎊

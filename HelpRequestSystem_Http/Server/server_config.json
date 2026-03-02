@@ -1,0 +1,8 @@
+{
+  "ServerPort": "7777",
+  "ApiEndpoint": "/api/helprequest/",
+  "ListenerUrl": "http://127.0.0.1:7777/api/helprequest/",
+  "LogFilePath": "server_log.txt",
+  "EnableFileLogging": true,
+  "EnableConsoleLogging": true
+}

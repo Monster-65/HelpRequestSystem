@@ -1,0 +1,198 @@
+═══════════════════════════════════════════════════════════════
+  📦 WINDOWS: .BAT vs .EXE - RISPOSTA CHIARA
+═══════════════════════════════════════════════════════════════
+
+
+LA TUA DOMANDA:
+"Non ho capito quando porto il sistema su Windows cosa devo fare,
+ se con i .bat o con l'exe"
+
+
+LA RISPOSTA SEMPLICE:
+─────────────────────────────────────────────────────────────
+
+🎯 USA I FILE .BAT (RACCOMANDATO)
+
+  Sul SERVER:
+    → Doppio click su "start_server.bat"
+  
+  Sul CLIENT:
+    → Doppio click su "start_client.bat"
+
+
+PERCHÉ I FILE .BAT?
+─────────────────────────────────────────────────────────────
+
+✅ Più facili da usare
+✅ Mostrano messaggi di conferma
+✅ Non si chiudono automaticamente
+✅ Dicono "I log sono in xxx_log.txt"
+✅ Perfetti per utenti non tecnici
+
+
+POSSO USARE GLI .EXE DIRETTAMENTE?
+─────────────────────────────────────────────────────────────
+
+✅ SÌ! Puoi usare anche gli .exe direttamente
+
+  Sul SERVER:
+    → Doppio click su "Server.exe"
+  
+  Sul CLIENT:
+    → Doppio click su "Client.exe"
+
+FUNZIONANO UGUALE! I file .bat semplicemente chiamano gli .exe
+con qualche messaggio in più.
+
+
+LA DIFFERENZA:
+─────────────────────────────────────────────────────────────
+
+File .BAT:
+  1. Mostra messaggio di benvenuto
+  2. Avvia l'applicazione (.exe)
+  3. Dice "pause" alla fine (rimane aperto)
+
+File .EXE:
+  1. Avvia direttamente l'applicazione
+  2. Nessun messaggio intermedio
+
+
+CONCLUSIONE:
+─────────────────────────────────────────────────────────────
+
+Per utenti normali:     → USA .BAT ⭐
+Per utenti esperti:     → Scegli tu (.bat o .exe)
+Per icone sul desktop:  → Puoi usare .exe
+Per avvio automatico:   → Entrambi vanno bene
+
+
+═══════════════════════════════════════════════════════════════
+  🚀 PROCEDURA COMPLETA IN 5 STEP
+═══════════════════════════════════════════════════════════════
+
+
+STEP 1: Build su Linux
+─────────────────────────────────────────────────────────────
+
+  cd /home/king_monster_/Scrivania/HelpRequestSystem
+  ./build_windows.sh
+
+  Scegli: [1] Self-contained
+
+  ✅ Crea cartella: build_windows/
+
+
+STEP 2: Crea ZIP
+─────────────────────────────────────────────────────────────
+
+  cd build_windows
+  zip -r HelpRequestSystem.zip *
+
+  ✅ File pronto per Windows
+
+
+STEP 3: Su Windows - Server
+─────────────────────────────────────────────────────────────
+
+  1. Estrai lo ZIP
+  2. Copia cartella "Server" dove vuoi
+  3. Apri server_config.json con Notepad
+     → Verifica "ServerPort": "7777"
+  4. Doppio click su "start_server.bat"
+  5. Consenti firewall se richiesto
+  6. Apri server_log.txt → Trova IP del server
+
+
+STEP 4: Su Windows - Client
+─────────────────────────────────────────────────────────────
+
+  1. Copia cartella "Client" su ogni PC
+  2. Apri client_config.json con Notepad
+     → Cambia "DefaultServerIp": "IP_DEL_SERVER"
+     → Verifica "ServerPort": "7777" (uguale al server!)
+  3. Salva
+  4. Doppio click su "start_client.bat"
+
+
+STEP 5: Test
+─────────────────────────────────────────────────────────────
+
+  1. Nel client: inserisci nome e messaggio
+  2. Clicca "Invia Richiesta"
+  3. Controlla che appaia nel server
+
+  ✅ FUNZIONA? Sistema operativo! 🎉
+
+
+═══════════════════════════════════════════════════════════════
+  📚 DOCUMENTAZIONE DISPONIBILE
+═══════════════════════════════════════════════════════────════
+
+
+Nel build_windows/ troverai:
+
+  📄 README_WINDOWS.txt
+     → Guida base per Windows
+
+  📄 GUIDA_WINDOWS_SEMPLICE.txt  ⭐ NUOVA!
+     → Guida completa e dettagliata
+     → Spiega differenza .bat vs .exe
+     → Risoluzione problemi passo-passo
+     → Procedura completa illustrata
+
+
+═══════════════════════════════════════════════════════════════
+  🧪 TEST RAPIDO SU LINUX
+═══════════════════════════════════════════════════════════════
+
+
+Prima di portare su Windows, testa su Linux:
+
+  TERMINALE 1 (Server):
+    cd Server
+    sudo dotnet run
+  
+  TERMINALE 2 (Client):
+    cd Client
+    dotnet run
+  
+  Nel client usa IP: 127.0.0.1
+
+  ✅ Funziona? Procedi con build Windows!
+
+
+═══════════════════════════════════════════════════════════════
+  📞 RIEPILOGO VELOCE
+═══════════════════════════════════════════════════════════════
+
+
+❓ Errore dotnet run?
+   ✅ RISOLTO! Ricompila con: dotnet build
+
+❓ Cosa uso su Windows?
+   ✅ File .BAT (raccomandato)
+   ✅ Oppure .EXE (funziona uguale)
+
+❓ Come porto il sistema su Windows?
+   ✅ ./build_windows.sh
+   ✅ Crea ZIP
+   ✅ Estrai su Windows
+   ✅ Usa i .bat per avviare
+
+❓ Dove trovo le istruzioni?
+   ✅ GUIDA_WINDOWS_SEMPLICE.txt (completa!)
+   ✅ README_WINDOWS.txt (base)
+
+
+═══════════════════════════════════════════════════════════════
+
+✅ Sistema pronto per il deployment!
+
+Per istruzioni dettagliate Windows:
+  → GUIDA_WINDOWS_SEMPLICE.txt
+
+Per domande tecniche:
+  → FAQ.md
+
+🎊 Buon lavoro! 🎊
