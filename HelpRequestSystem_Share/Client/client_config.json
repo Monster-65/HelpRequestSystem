@@ -1,0 +1,6 @@
+{
+  "SharePath": "/tmp/helprequests_test",
+  "LogFilePath": "client_log.txt",
+  "EnableFileLogging": true,
+  "EnableConsoleLogging": true
+}

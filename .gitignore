@@ -1,9 +1,15 @@
-# Build results
+# Build results (file intermedi - non necessari per deployment)
 [Bb]in/
 [Oo]bj/
 
-# Keep publish folder
-!**/[Bb]in/[Rr]elease/**/publish/
+# Runtime logs  
+**/*_log.txt
+
+# Backup files
+**/*.backup
+
+# build_windows/ contiene il deployment finale - NON ignorare
+# (viene rigenerato da build_windows.sh)
 
 # Visual Studio cache/options
 .vs/

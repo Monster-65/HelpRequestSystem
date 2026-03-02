@@ -1,0 +1,8 @@
+{
+  "SharePath": "/tmp/helprequests_test",
+  "PollIntervalSeconds": 1,
+  "AutoDeleteProcessedFiles": true,
+  "LogFilePath": "server_log.txt",
+  "EnableFileLogging": true,
+  "EnableConsoleLogging": true
+}
